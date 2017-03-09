@@ -1,5 +1,6 @@
 #include "qb_class_imu.h"
 
+
 int main(int argc, char** argv){
 
   ros::init(argc, argv, "qb_interface_node");

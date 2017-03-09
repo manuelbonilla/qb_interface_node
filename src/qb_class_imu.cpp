@@ -100,6 +100,7 @@ bool qb_class_imu::readIMU(){
 	qb_interface::inertialSensor tmp_acc, tmp_gyro, tmp_mag;
 	qb_interface::inertialSensorArray acc, gyro, mag;
 
+	// std::cout << "# board " << imuboard_chain_.size() << std::endl;	
 
 	for (int k = imuboard_chain_.size(); k--;){
 	    imuboard_chain_[k]->getImuReadings();
@@ -144,20 +145,20 @@ bool qb_class_imu::readIMU(){
 			// verify if this usleep is needed
 			usleep(0.5);
 		}
-
-		if ((Acc_old_ - Acc_).sum() != 0)
-	 	{
-			imuboard_pub_acc_.publish(acc);
-			imuboard_pub_gyro_.publish(gyro);			
-			imuboard_pub_mag_.publish(mag);	
-	 	}
-
-	 	Acc_old_ = Acc_;
-		
 	
 	}
 
+	// if (1)
+	if ((Acc_old_ - Acc_).sum() != 0)
+ 	{
+		imuboard_pub_acc_.publish(acc);
+		imuboard_pub_gyro_.publish(gyro);			
+		imuboard_pub_mag_.publish(mag);	
+ 	}
 
+ 	Acc_old_ = Acc_;
+
+ 	usleep(1000);
 }
 
 

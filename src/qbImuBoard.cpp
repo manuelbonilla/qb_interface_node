@@ -103,6 +103,9 @@ void qbImuBoard::initImuBoard() {
 		printf("ID: %d  - %d, %d, %d, %d, %d\n", ids_[i], imu_table_[5*i + 0], imu_table_[5*i + 1], imu_table_[5*i + 2], imu_table_[5*i + 3], imu_table_[5*i + 4]);
 		
 	}
+
+	printf("\n\n\033[1;31mACC SCALE FACTOR: 2G\033[0m\n\n");
+
 	
 	// Imu values is a 3 sensors x 3 axes x n_imu_ values
 	imu_values_ = (float *) calloc(n_imu_, 3*3*sizeof(float));
